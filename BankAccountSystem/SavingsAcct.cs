@@ -26,7 +26,7 @@
                 Console.WriteLine($"More than {WithdrawalLimit} withdrawals! Extra withdrawal charge applied.");
                 Balance -= WithdrawalCharge;
             }
-
+            withdrawalCount++;
             base.Withdraw(amount);
         }
     }
