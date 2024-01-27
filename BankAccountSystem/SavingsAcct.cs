@@ -21,13 +21,22 @@
 
         public override void Withdraw(decimal amount)
         {
-            if (withdrawalCount >= WithdrawalLimit)
+            if (amount > Balance)
             {
-                Console.WriteLine($"More than {WithdrawalLimit} withdrawals! Extra withdrawal charge applied.");
-                Balance -= WithdrawalCharge;
+                Console.WriteLine("Withdrawal amount exceeds the available balance. Withdrawal canceled.");
             }
-            withdrawalCount++;
-            base.Withdraw(amount);
+            else
+            {
+                if (withdrawalCount >= WithdrawalLimit)
+                {
+                    Console.WriteLine($"More than {WithdrawalLimit} withdrawals! Extra withdrawal charge applied.");
+                    Balance -= WithdrawalCharge;
+                }
+
+                withdrawalCount++;
+
+                base.Withdraw(amount);
+            }
         }
     }
 }
