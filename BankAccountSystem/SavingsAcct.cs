@@ -35,7 +35,7 @@
 
                 withdrawalCount++;
 
-                base.Withdraw(amount);
+                Balance -= amount;
             }
         }
     }
